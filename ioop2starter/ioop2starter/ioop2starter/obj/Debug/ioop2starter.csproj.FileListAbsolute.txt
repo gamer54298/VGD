@@ -1,0 +1,7 @@
+C:\VGD\ioop2starter\ioop2starter\obj\Debug\ioop2starter.csprojAssemblyReference.cache
+C:\VGD\ioop2starter\ioop2starter\obj\Debug\ioop2starter.csproj.CoreCompileInputs.cache
+C:\VGD\ioop2starter\ioop2starter\bin\Debug\ioop2starter.exe.config
+C:\VGD\ioop2starter\ioop2starter\bin\Debug\ioop2starter.exe
+C:\VGD\ioop2starter\ioop2starter\bin\Debug\ioop2starter.pdb
+C:\VGD\ioop2starter\ioop2starter\obj\Debug\ioop2starter.exe
+C:\VGD\ioop2starter\ioop2starter\obj\Debug\ioop2starter.pdb
