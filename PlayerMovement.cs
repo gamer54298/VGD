@@ -7,6 +7,12 @@ public class PlayerMovement : MonoBehaviour {
     public float jumpforce;
     private float moveInput;
 
+    private bool Isgrounded;
+    public transform groundCheck;
+    public float Checkradius;
+    public LayerMask WhatIsGround;
+
+
     private Rigidbody2D rb;
 
 	// Use this for initialization
@@ -18,7 +24,9 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        moveInput = Input.GetAxisRaw("Horizantal");
+        Isgrounded = Physics2D.OverlapCircle(groundCheck.position, Checkradius, WhatIsGround);
+
+        moveInput = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
     }
 }
