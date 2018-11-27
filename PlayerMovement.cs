@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     private float moveInput;
 
     private bool Isgrounded;
-    public transform groundCheck;
+    public Transform groundCheck;
     public float Checkradius;
     public LayerMask WhatIsGround;
 
