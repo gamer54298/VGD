@@ -3,33 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
-    public float speed;
-    public float jumpforce;
-    private float moveInput;
-
-    private bool Isgrounded;
-    public Transform groundCheck;
-    public float Checkradius;
-    public LayerMask WhatIsGround;
+    public enum type { platformer, topDown};
+    public type moveType;
+    public float moveSpeed, jumpHeight;
+    public bool onGround;
 
 
-    private Rigidbody2D rb;
+    void Start()
+    {
 
-	// Use this for initialization
-	void Start () {
-        rb = GetComponent<Rigidbody2D>();
-		
-	}
+    }
 
-    // Update is called once per frame
     void Update()
     {
-        Isgrounded = Physics2D.OverlapCircle(groundCheck.position, Checkradius, WhatIsGround);
-
-        moveInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-
-        moveInput = Input.GetAxisRaw("Vertical");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.x);
+    if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            transform.Translate(Vector2.right * Time.deltaTime * moveSpeed);
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            transform.Translate(Vector2.left * Time.deltaTime * moveSpeed);
+        }
+    if (moveType == type.platformer && Input.GetAxisRaw("Vertical") >  0)
+        {
+            GetComponent<Rigidbody2D>().AddForce(Vector2.up * jumpHeight, ForceMode2D.Impulse);  
+        }
+    }
+    void OnCollisionEnter2D (Collision2D obj)
+    {
+        if (obj.gameObject.tag == "ground") {
+            onGround = true;
+        }
+    }
+    void OnCollisionExit2D(Collision2D obj)
+    {
+        if (obj.gameObject.tag == "ground")
+        {
+            onGround = false;
+        }
     }
 }
